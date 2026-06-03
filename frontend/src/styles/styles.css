@@ -4,179 +4,271 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f1ec;
-  color: #222;
+  font-family: 'Poppins', 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
 }
 
+/* NAVBAR */
 .navbar {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 15px 30px;
-  background: #111;
-  color: white;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 15px 40px;
+  background: #000000;
+  border-bottom: 2px solid #c9a03d;
   flex-wrap: wrap;
 }
 
 .navbar h2 {
-  color: #d8a84f;
+  color: #c9a03d;
   margin-right: 20px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 .navbar a {
-  color: white;
+  color: #e0e0e0;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #c9a03d;
 }
 
 .navbar button,
 .form button {
-  background: #d8a84f;
-  border: 0;
-  padding: 10px 15px;
-  border-radius: 8px;
+  background: #c9a03d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
+  color: #000;
+  transition: all 0.3s ease;
 }
 
+.navbar button:hover,
+.form button:hover {
+  background: #a07e2c;
+  transform: scale(1.02);
+}
+
+/* CONTENIDO */
 .container {
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 25px;
 }
 
+h1 {
+  color: #c9a03d;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* CARDS Y FORMULARIOS */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
 .card,
 .item,
 .form {
-  background: white;
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 2px 8px #0001;
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #c9a03d;
 }
 
 .form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
-  margin-bottom: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  background: #111;
 }
 
 .form input,
 .form select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 12px 15px;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+.form input:focus,
+.form select:focus {
+  outline: none;
+  border-color: #c9a03d;
+}
+
+.form input::placeholder {
+  color: #666;
 }
 
 .list {
   display: grid;
-  gap: 12px;
+  gap: 15px;
 }
 
 .item {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  background: #111;
+  border-left: 4px solid #c9a03d;
 }
 
-.usuario {
-  margin-top: 25px;
-  font-weight: bold;
-}
-
-h1 {
-  color: #111;
-}
+/* LOGIN */
 .login-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #111, #3a2a13);
+  background-image: url("../Img/Fondos/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.login-overlay {
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .login-card {
-  background: white;
-  width: 360px;
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px #0005;
+  width: 450px;
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 45px 40px;
+  border-radius: 28px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.login-card h1 {
-  text-align: center;
-  color: #111;
-  margin-bottom: 0;
-}
-
-.login-card p {
-  text-align: center;
-  margin-top: 0;
-  color: #666;
+  gap: 18px;
+  border: 1px solid rgba(201, 160, 61, 0.3);
 }
 
 .login-card input {
-  padding: 13px;
-  border: 1px solid #ccc;
-  border-radius: 9px;
+  padding: 14px 16px;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #c9a03d;
+  background: #1f1f1f;
 }
 
 .login-card button {
-  padding: 13px;
+  padding: 14px;
   border: none;
-  border-radius: 9px;
-  background: #d8a84f;
+  border-radius: 40px;
+  background: #c9a03d;
   font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
+  color: #000;
+  transition: all 0.3s ease;
 }
 
-.error {
-  background: #ffe0e0;
-  color: #9b111e;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
+.login-card button:hover {
+  background: #b58b2d;
+  transform: scale(1.02);
 }
-/*Login */
+
 .logo-login {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.logo-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #111;
-  color: #d8a84f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  box-shadow: 0 8px 18px #0004;
-  border: 3px solid #d8a84f;
+.logo-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 8px rgba(201, 160, 61, 0.5));
 }
 
 .logo-login h1 {
-  margin: 10px 0 0;
-  color: #111;
-  font-size: 32px;
+  margin: 0;
+  color: #c9a03d;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
 .logo-login span {
-  color: #666;
+  color: #aaa;
   font-size: 14px;
+  margin-top: 8px;
   text-align: center;
+}
+
+.error {
+  background: #2a0a0a;
+  color: #e08e8e;
+  padding: 12px;
+  border-radius: 40px;
+  text-align: center;
+  border-left: 3px solid #c9a03d;
+}
+
+/* DASHBOARD */
+.dashboard-bg {
+  min-height: calc(100vh - 80px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dashboard-overlay {
+  min-height: calc(100vh - 80px);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 60px;
+}
+
+.dashboard-overlay h1 {
+  color: #c9a03d;
+  font-size: 52px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.dashboard-overlay p {
+  font-size: 18px;
+  margin-bottom: 35px;
+  color: #ccc;
+}
+
+.dashboard-overlay .card {
+  background: rgba(26, 26, 26, 0.95);
+  color: #e0e0e0;
+  border: 1px solid #c9a03d;
 }

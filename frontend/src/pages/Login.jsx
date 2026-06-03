@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import logo from "../Img/Icon/Logo.png";
 
 export default function Login() {
   const [form, setForm] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const [error, setError] = useState("");
@@ -17,41 +18,55 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/usuarios/login", form);
+      const res = await api.post("/usuarios/login", {
+        username: form.username.trim(),
+        password: form.password.trim(),
+      });
+
       login(res.data.usuario, res.data.token);
       navigate("/");
     } catch (error) {
-      setError(error.response?.data?.mensaje || "Error al iniciar sesión");
+      console.log("ERROR LOGIN:", error);
+      console.log("RESPUESTA:", error.response?.data);
+      setError(error.response?.data?.mensaje || error.message);
     }
   };
 
   return (
     <div className="login-container">
-      <form className="login-card" onSubmit={ingresar}>
-        <div className="logo-login">
-          <div className="logo-circle">💈</div>
-          <h1>BarberApp</h1>
-          <span>Gestión profesional para barberías</span>
-        </div>
+      <div className="login-overlay">
+        <form className="login-card" onSubmit={ingresar}>
+          <div className="logo-login">
+            <img src={logo} alt="BarberApp" className="logo-img" />
 
-        {error && <div className="error">{error}</div>}
+            <h1>BarberApp</h1>
 
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={form.username}
-          onChange={(e) => setForm({ ...form, username: e.target.value })}
-        />
+            <span>Gestión profesional para barberías</span>
+          </div>
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-        />
+          {error && <div className="error">{error}</div>}
 
-        <button>Ingresar</button>
-      </form>
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={form.username}
+            onChange={(e) =>
+              setForm({ ...form, username: e.target.value })
+            }
+          />
+
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={form.password}
+            onChange={(e) =>
+              setForm({ ...form, password: e.target.value })
+            }
+          />
+
+          <button>Ingresar</button>
+        </form>
+      </div>
     </div>
   );
 }
