@@ -17,7 +17,7 @@ export const registrar = async (req, res) => {
       username,
       nombre,
       password: passwordHash,
-      rol
+      rol,
     });
 
     res.status(201).json({
@@ -26,8 +26,8 @@ export const registrar = async (req, res) => {
         id: usuario._id,
         username: usuario.username,
         nombre: usuario.nombre,
-        rol: usuario.rol
-      }
+        rol: usuario.rol,
+      },
     });
   } catch (error) {
     res.status(400).json({ mensaje: error.message });
@@ -43,6 +43,10 @@ export const login = async (req, res) => {
       return res.status(404).json({ mensaje: "Usuario no encontrado" });
     }
 
+    console.log("Usuario recibido:", username);
+    console.log("Password recibido:", password);
+    console.log("Password Mongo:", usuario.password);
+
     const passwordValida = await bcrypt.compare(password, usuario.password);
     if (!passwordValida) {
       return res.status(401).json({ mensaje: "Contraseña incorrecta" });
@@ -51,7 +55,7 @@ export const login = async (req, res) => {
     const token = jwt.sign(
       { id: usuario._id, rol: usuario.rol },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
     res.json({
@@ -61,8 +65,8 @@ export const login = async (req, res) => {
         id: usuario._id,
         username: usuario.username,
         nombre: usuario.nombre,
-        rol: usuario.rol
-      }
+        rol: usuario.rol,
+      },
     });
   } catch (error) {
     res.status(500).json({ mensaje: error.message });

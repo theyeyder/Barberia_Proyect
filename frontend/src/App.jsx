@@ -1,4 +1,4 @@
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "./context/AuthContext.jsx";
 import RutaPrivada from "./components/RutaPrivada.jsx";
 
@@ -9,21 +9,37 @@ import Barberos from "./pages/Barberos.jsx";
 import Servicios from "./pages/Servicios.jsx";
 import Citas from "./pages/Citas.jsx";
 
+import logo from "./Img/Icon/Logo.png";
+
 export default function App() {
   const { usuario, logout } = useAuth();
+  const location = useLocation();
+
+  const estaEnInicio = location.pathname === "/";
 
   return (
     <div>
       {usuario && (
         <nav className="navbar">
-          <h2>BarberApp</h2>
-          <Link to="/">Inicio</Link>
-          <Link to="/clientes">Clientes</Link>
-          <Link to="/barberos">Barberos</Link>
-          <Link to="/servicios">Servicios</Link>
-          <Link to="/citas">Citas</Link>
-          <span>{usuario.nombre}</span>
-          <button onClick={logout}>Salir</button>
+          <div className="navbar-brand">
+            <h2>BarberApp</h2>
+            <img src={logo} alt="Logo BarberApp" className="navbar-logo" />
+          </div>
+
+          {!estaEnInicio && (
+            <div className="navbar-links">
+              <Link to="/">Inicio</Link>
+              <Link to="/clientes">Clientes</Link>
+              <Link to="/barberos">Barberos</Link>
+              <Link to="/servicios">Servicios</Link>
+              <Link to="/citas">Citas</Link>
+            </div>
+          )}
+
+          <div className="navbar-user">
+            <span>{usuario.nombre}</span>
+            <button onClick={logout}>Salir</button>
+          </div>
         </nav>
       )}
 

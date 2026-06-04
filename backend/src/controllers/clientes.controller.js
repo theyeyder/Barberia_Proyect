@@ -35,3 +35,20 @@ export const eliminar = async (req, res) => {
     res.status(400).json({ mensaje: error.message });
   }
 };
+// Buscar clientes
+export const buscarClientes = async (req, res) => {
+  try {
+    const { q } = req.query;
+
+   const clientes = await Modelo.find({
+      $or: [
+        { nombre: { $regex: q, $options: "i" } },
+        { documento: { $regex: q, $options: "i" } }
+      ]
+    });
+
+    res.json(clientes);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+};

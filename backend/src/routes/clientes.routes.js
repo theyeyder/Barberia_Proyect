@@ -1,6 +1,11 @@
 import { Router } from "express";
-import { listar, crear, actualizar, eliminar } from "../controllers/clientes.controller.js";
-
+import {
+  listar,
+  crear,
+  actualizar,
+  eliminar,
+  buscarClientes
+} from "../controllers/clientes.controller.js";
 const router = Router();
 
 /**
@@ -13,5 +18,6 @@ router.get("/", listar);
 router.post("/", crear);
 router.put("/:id", actualizar);
 router.delete("/:id", eliminar);
+router.get("/buscar", buscarClientes);
 
 export default router;
