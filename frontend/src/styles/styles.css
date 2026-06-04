@@ -138,9 +138,19 @@ h1 {
   background: linear-gradient(145deg, #1f1f1f 0%, #181818 100%);
   border: 1px solid #333;
   border-radius: 10px;
-  color: #e0e0e0;
+  color: #ffffff;
   font-size: 14px;
   transition: all 0.3s ease;
+}
+.form select {
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #c9a03d;
+}
+
+.form select option {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .form input:focus,
@@ -456,6 +466,30 @@ h1 {
   height: 28px;
   object-fit: contain;
 }
+
+/* ESTADISTICAS DASHBOARD */
+
+/* ESTADISTICAS DASHBOARD */
+
+.card h1 {
+  margin-top: 10px;
+  font-size: 42px;
+  color: #c9a03d;
+}
+
+.card h3 {
+  margin-bottom: 5px;
+}/* ESTADISTICAS DASHBOARD */
+
+.card h1 {
+  margin-top: 10;
+  font-size: 15px;
+  color: #000000;
+}
+
+.card h3 {
+  margin-bottom: 5px;
+}
 /* BOTONES FORMULARIO */
 
 .acciones-formulario {
@@ -512,4 +546,90 @@ h1 {
   width: 30px;
   height: 30px;
   object-fit: contain;
+}
+/*BARBEROSS BOTONES*/
+.input-busqueda {
+  width: 100%;
+  padding: 13px 16px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  background: #222;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: #c9a03d;
+}
+/*citas y botones etc*/
+.acciones-cita {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.btn-cita {
+  border: none;
+  padding: 11px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cita:hover {
+  transform: translateY(-3px);
+}
+
+.confirmar {
+  background: #2e7d32;
+  color: white;
+}
+
+.cancelar {
+  background: #c62828;
+  color: white;
+}
+
+.reprogramar {
+  background: #c9a03d;
+  color: #000;
+}
+
+.btn-buscar-cliente {
+  background: #c9a03d;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cliente-encontrado {
+  background: linear-gradient(135deg, #141414 0%, #0c0c0c 100%);
+  border-left: 4px solid #2e7d32;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cliente-ok {
+  background: #0f2d17;
+  color: #8ee09a;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.cliente-error {
+  background: #2a0a0a;
+  color: #e08e8e;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
